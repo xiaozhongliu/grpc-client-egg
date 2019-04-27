@@ -1,12 +1,9 @@
-import * as fs from 'fs'
+import { promises as fs, constants } from 'fs'
 import * as path from 'path'
 import * as util from 'util'
 import * as grpc from 'grpc'
 import * as loader from '@grpc/proto-loader'
 import { Application } from 'egg'
-
-const exists = util.promisify(fs.exists)
-const readdir = util.promisify(fs.readdir)
 
 export default async (app: Application) => {
     const clientServicesMap: Indexed = {}
@@ -23,10 +20,13 @@ async function getMultiTierServices(app: Application, clientConfig: ClientConfig
     const services: Indexed = {}
     const protoDir = path.join(app.baseDir, clientConfig.protoPath)
 
-    if (!await exists(protoDir)) {
+    try {
+        await fs.access(protoDir, constants.F_OK)
+    } catch (error) {
         throw new Error('proto directory not exist')
     }
-    const protoFileList = await readdir(protoDir)
+
+    const protoFileList = await fs.readdir(protoDir)
     for (const protoFile of protoFileList) {
         if (path.extname(protoFile) !== '.proto') { continue }
 
@@ -61,6 +61,9 @@ async function traverseDefinition(relevantParent: any, tier: any, tierName: stri
 
     for (const subTierName of Object.keys(tier)) {
         let relevantCurrent = relevantParent[tierName]
+        if (relevantCurrent.format) {
+            return delete relevantParent[tierName]
+        }
         if (!relevantCurrent) {
             relevantCurrent = relevantParent[tierName] = {}
         }

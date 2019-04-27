@@ -1,5 +1,7 @@
+#!/bin/sh
+
 tsc
-rm -r **/*.map
-rsync dist/ .
+find . -name '*.map' -delete
+rsync -av dist/ .
 rm -r dist
 npm publish
