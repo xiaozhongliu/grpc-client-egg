@@ -1,22 +1,30 @@
 {
+    "compileOnSave": true,
     "compilerOptions": {
-        "target": "es2017",
         "module": "commonjs",
-        "esModuleInterop": true,
-        "moduleResolution": "node",
-        "experimentalDecorators": true,
+        "target": "es2018",
+        "charset": "utf8",
         "noImplicitAny": true,
-        "sourceMap": true,
-        "outDir": "dist",
+        "esModuleInterop": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "allowSyntheticDefaultImports": true,
+        "noImplicitUseStrict": true,
+        "listEmittedFiles": true,
+        "removeComments": true,
+        "skipLibCheck": true,
+        "sourceMap": false,
+        "pretty": true,
         "baseUrl": ".",
         "paths": {
             "*": [
                 "node_modules/*",
-                "type/*"
+                "typings/*"
             ]
         }
     },
     "exclude": [
-        "test/*"
+        "node_moddules"
     ]
 }
