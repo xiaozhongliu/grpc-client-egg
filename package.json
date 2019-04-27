@@ -1,6 +1,6 @@
 {
     "name": "grpc-client-egg",
-    "version": "0.0.3",
+    "version": "0.0.6",
     "description": "An egg grpc client.",
     "main": "index.js",
     "license": "MIT",
