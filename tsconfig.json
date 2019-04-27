@@ -5,7 +5,7 @@
         "esModuleInterop": true,
         "moduleResolution": "node",
         "experimentalDecorators": true,
-        "noImplicitAny": false,
+        "noImplicitAny": true,
         "sourceMap": true,
         "outDir": "dist",
         "baseUrl": ".",
