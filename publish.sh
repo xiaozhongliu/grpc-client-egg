@@ -1,7 +1,5 @@
 #!/bin/sh
 
+find . -name '*.js' -delete
 tsc
-find . -name '*.map' -delete
-rsync -av dist/ .
-rm -r dist
 npm publish

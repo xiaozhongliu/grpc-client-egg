@@ -1,7 +1,3 @@
 node_modules
 package-lock.json
-typings/app
-typings/config
-
 *.js
-*.map
