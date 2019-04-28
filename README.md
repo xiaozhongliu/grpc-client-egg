@@ -1,4 +1,5 @@
 # grpc-client-egg
+[![npm version](https://img.shields.io/npm/v/grpc-client-egg.svg?style=flat-square)](https://www.npmjs.org/package/grpc-client-egg)
 > An egg grpc client written in Typescript.
 
 ## How to use
