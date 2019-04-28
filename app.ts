@@ -61,7 +61,9 @@ async function traverseDefinition(relevantParent: any, tier: any, tierName: stri
         if (!relevantCurrent) {
             relevantCurrent = relevantParent[tierName] = {}
         }
-        traverseDefinition(relevantCurrent, tier[subTierName], subTierName, clientConfig)
+        if (!tier[subTierName].format) {
+            traverseDefinition(relevantCurrent, tier[subTierName], subTierName, clientConfig)
+        }
     }
 }
 
